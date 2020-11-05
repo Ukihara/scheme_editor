@@ -9,23 +9,23 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    choseobj.cpp \
-    createlist.cpp \
-    createobj.cpp \
-    main.cpp \
-    mainwindow.cpp
+    src/choseobj.cpp \
+    src/createlist.cpp \
+    src/createobj.cpp \
+    src/main.cpp \
+    src/mainwindow.cpp
 
 HEADERS += \
-    choseobj.h \
-    createlist.h \
-    createobj.h \
-    mainwindow.h
+    src/choseobj.h \
+    src/createlist.h \
+    src/createobj.h \
+    src/mainwindow.h
 
 FORMS += \
-    choseobj.ui \
-    createlist.ui \
-    createobj.ui \
-    mainwindow.ui
+    ui_forms/choseobj.ui \
+    ui_forms/createlist.ui \
+    ui_forms/createobj.ui \
+    ui_forms/mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
