@@ -20,6 +20,7 @@ signals:
 
 private slots:
     void on_readyBut_clicked();
+    void on_cancelBut_clicked();
 
 private:
     Ui::CreateObj *ui;
