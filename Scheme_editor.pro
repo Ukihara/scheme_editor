@@ -13,13 +13,15 @@ SOURCES += \
     src/createlist.cpp \
     src/createobj.cpp \
     src/main.cpp \
-    src/mainwindow.cpp
+    src/mainwindow.cpp \
+    src/tinyxml2.cpp
 
 HEADERS += \
     src/choseobj.h \
     src/createlist.h \
     src/createobj.h \
-    src/mainwindow.h
+    src/mainwindow.h \
+    src/tinyxml2.h
 
 FORMS += \
     ui_forms/choseobj.ui \

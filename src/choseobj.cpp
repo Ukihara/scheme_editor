@@ -9,7 +9,6 @@ ChoseObj::ChoseObj(QWidget *parent) :
 
     createobj = new CreateObj();
     connect(createobj, &CreateObj::choseWindow, this, &ChoseObj::show);
-
 }
 
 ChoseObj::~ChoseObj()
@@ -21,10 +20,18 @@ void ChoseObj::on_readyBut_clicked()
 {
     this->close();
     emit firstWindow(); //вызываем сигнал на открытие главного окна
+    //здесь будет код для описания добавления выбранного объекта на главный экран
 }
 
 void ChoseObj::on_createBut_clicked()
 {
     createobj->show();
     this->close();
+}
+
+void ChoseObj::on_cancelBut_clicked()
+{
+    this->close();
+    emit firstWindow(); //вызываем сигнал на открытие главного окна
+    //здесь больше ничего не будет
 }

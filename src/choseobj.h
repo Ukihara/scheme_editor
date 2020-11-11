@@ -23,6 +23,7 @@ private slots:
     //обработка нажатия кнопки "готово"
     void on_readyBut_clicked();
     void on_createBut_clicked();
+    void on_cancelBut_clicked();
 
 private:
     Ui::ChoseObj *ui;
