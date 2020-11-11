@@ -27,7 +27,7 @@
      <string>Выбрать оборудование</string>
     </property>
    </widget>
-   <widget class="QGraphicsView" name="graphicsView">
+   <widget class="QGraphicsView" name="TPlan">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -97,6 +97,19 @@
     </property>
     <property name="text">
      <string>Посчитать площадь</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="tempBut">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>180</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Щёлк</string>
     </property>
    </widget>
   </widget>
