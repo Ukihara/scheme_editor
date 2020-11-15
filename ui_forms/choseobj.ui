@@ -14,29 +14,6 @@
    <string>Выбор оборудования</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="readyBut">
-    <property name="geometry">
-     <rect>
-      <x>660</x>
-      <y>490</y>
-      <width>121</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Готово</string>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="graphicsView">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>771</width>
-      <height>471</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QPushButton" name="createBut">
     <property name="geometry">
      <rect>
@@ -53,7 +30,7 @@
    <widget class="QPushButton" name="cancelBut">
     <property name="geometry">
      <rect>
-      <x>530</x>
+      <x>660</x>
       <y>490</y>
       <width>121</width>
       <height>51</height>
@@ -61,6 +38,45 @@
     </property>
     <property name="text">
      <string>Отмена</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="tcompBut">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>191</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>COMPUTER</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="tprinterBut">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>10</y>
+      <width>191</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PRINTER</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="trouterBut">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>10</y>
+      <width>191</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>ROUTER</string>
     </property>
    </widget>
   </widget>

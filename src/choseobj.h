@@ -18,12 +18,18 @@ public:
 
 signals:
     void firstWindow(); //сигнал для главного окна
+    void firstWindow_comp(); //сигнал для отрисовки компьютера
+    void firstWindow_prin(); //сигнал для отрисовки принтера
+    void firstWindow_rout(); //сигнал для отрисовки роутера
 
 private slots:
     //обработка нажатия кнопки "готово"
-    void on_readyBut_clicked();
     void on_createBut_clicked();
     void on_cancelBut_clicked();
+
+    void on_tcompBut_clicked();
+    void on_tprinterBut_clicked();
+    void on_trouterBut_clicked();
 
 private:
     Ui::ChoseObj *ui;
