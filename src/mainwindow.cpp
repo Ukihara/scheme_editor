@@ -5,20 +5,35 @@ QString fileName;
 const char *fileNameChar = "";
 QByteArray tmp;
 
+static int randomBetween(int low, int high)
+{
+    return (qrand() % ((high + 1) - low) + low);
+}
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->resize(1200, 700);
+    this->setFixedSize(1200, 700);
     scene = new QGraphicsScene(this);
 
     //инициализируем окно выбора и подключаем к слоту
     //возврата на главное окно кнопку "Готово" на втором окне
     choseobj = new ChoseObj();
     connect(choseobj, &ChoseObj::firstWindow, this, &MainWindow::show);
+    connect(choseobj, &ChoseObj::firstWindow_comp, this, &MainWindow::paint_comp);
+    connect(choseobj, &ChoseObj::firstWindow_prin, this, &MainWindow::paint_prin);
+    connect(choseobj, &ChoseObj::firstWindow_rout, this, &MainWindow::paint_rout);
 
     createlist = new CreateList();
     connect(createlist, &CreateList::firstWindow, this, &MainWindow::show);
+
+    ui->choseobjBut->setEnabled(false);
+    ui->countBut->setEnabled(false);
+    ui->createlistBut->setEnabled(false);
+    ui->areaBut->setEnabled(false);
 }
 
 MainWindow::~MainWindow()
@@ -29,7 +44,6 @@ MainWindow::~MainWindow()
 void MainWindow::on_choseobjBut_clicked()
 {
     choseobj->show();
-    this->close();
 }
 
 void MainWindow::on_createlistBut_clicked()
@@ -48,6 +62,30 @@ void MainWindow::on_areaBut_clicked()
 {
     //здесь считаем площадь и выводим на areaLine
     ui->areaLine->setText("Вы нажали кнопку");
+}
+
+void MainWindow::paint_comp()
+{
+    TComp *item = new TComp();
+    item->setPos(randomBetween(30, 470), randomBetween(30, 470));
+    comps.push_back(item);
+    scene->addItem(item);
+}
+
+void MainWindow::paint_prin()
+{
+    TPrinter *item = new TPrinter();
+    item->setPos(randomBetween(30, 470), randomBetween(30, 470));
+    printers.push_back(item);
+    scene->addItem(item);
+}
+
+void MainWindow::paint_rout()
+{
+    TRouter *item = new TRouter();
+    item->setPos(randomBetween(30, 470), randomBetween(30, 470));
+    routers.push_back(item);
+    scene->addItem(item);
 }
 
 void MainWindow::paint()
@@ -128,6 +166,10 @@ void MainWindow::paint()
         xml_door = xml_door->NextSiblingElement("door");
         dots.clear();
     }
+    ui->choseobjBut->setEnabled(true);
+    ui->countBut->setEnabled(true);
+    ui->createlistBut->setEnabled(true);
+    ui->areaBut->setEnabled(true);
 }
 
 void MainWindow::on_tempBut_clicked()

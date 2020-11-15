@@ -16,11 +16,22 @@ ChoseObj::~ChoseObj()
     delete ui;
 }
 
-void ChoseObj::on_readyBut_clicked()
+void ChoseObj::on_tcompBut_clicked()
 {
     this->close();
-    emit firstWindow(); //вызываем сигнал на открытие главного окна
-    //здесь будет код для описания добавления выбранного объекта на главный экран
+    emit firstWindow_comp();
+}
+
+void ChoseObj::on_tprinterBut_clicked()
+{
+    this->close();
+    emit firstWindow_prin();
+}
+
+void ChoseObj::on_trouterBut_clicked()
+{
+    this->close();
+    emit firstWindow_rout();
 }
 
 void ChoseObj::on_createBut_clicked()
