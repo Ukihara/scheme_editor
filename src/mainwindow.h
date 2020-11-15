@@ -23,6 +23,9 @@ using namespace tinyxml2;
 //подключаем окно "выбор объекта"
 #include "choseobj.h"
 #include "createlist.h"
+#include "tcomp.h"
+#include "tprinter.h"
+#include "trouter.h"
 
 namespace Ui {
 class MainWindow;
@@ -36,6 +39,9 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void paint();
+    void paint_comp();
+    void paint_prin();
+    void paint_rout();
 
 private slots:
     void on_choseobjBut_clicked();
@@ -54,5 +60,9 @@ private:
     CreateList *createlist;
     QLineEdit *countLine;
     QLineEdit *areaLine;
+
+    QVector <TComp*> comps;
+    QVector <TPrinter*> printers;
+    QVector <TRouter*> routers;
 };
 #endif // MAINWINDOW_H
