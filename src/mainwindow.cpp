@@ -34,6 +34,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->countBut->setEnabled(false);
     ui->createlistBut->setEnabled(false);
     ui->areaBut->setEnabled(false);
+    ui->scaleEdit->setEnabled(false);
+    ui->scaleLabel->setEnabled(false);
+    ui->scaleLabel_2->setEnabled(false);
+    ui->scaleLabel_3->setEnabled(false);
 }
 
 MainWindow::~MainWindow()
@@ -61,7 +65,28 @@ void MainWindow::on_countBut_clicked()
 void MainWindow::on_areaBut_clicked()
 {
     //здесь считаем площадь и выводим на areaLine
-    ui->areaLine->setText("Вы нажали кнопку");
+    QList<QGraphicsItem *> items =  scene->items();
+    bool frst = true;
+    double square = 0;
+    int frst_wall = 1;
+    int scnd_wall = 1;
+    double meter_scale = ui->scaleEdit->text().toDouble();
+
+    for (auto x : items){
+        if (x->boundingRect().height() == 8 || x->boundingRect().width() == 8){ // that means that this wall is main
+            if (frst){ // walls should be grouped by room (room1_wall, room1_wall, room2_wall, room2_wall, ... etc)
+                frst_wall = x->boundingRect().height() == 8 ? x->boundingRect().width() - 1 : x->boundingRect().height() - 1;
+                frst = false;
+            }
+            else{
+                scnd_wall = x->boundingRect().height() == 8 ? x->boundingRect().width() - 1 : x->boundingRect().height() - 1;
+                square += frst_wall * scnd_wall;
+                frst = true;
+                qDebug() << "nth room square : " << frst_wall * scnd_wall;
+            }
+        }
+    }
+    ui->areaLine->setText(QString::number(square * meter_scale * meter_scale) + " m^2");
 }
 
 void MainWindow::paint_comp()
@@ -141,7 +166,7 @@ void MainWindow::paint()
         }
         dots.push_back(dots[0]);
         QPolygonF pol(dots);
-        scene->addPolygon(pol, QPen(Qt::black), QBrush(Qt::darkYellow));
+        scene->addPolygon(pol, QPen(Qt::black), QBrush(Qt::darkBlue));
 
         xml_win = xml_win->NextSiblingElement("window");
         dots.clear();
@@ -166,10 +191,6 @@ void MainWindow::paint()
         xml_door = xml_door->NextSiblingElement("door");
         dots.clear();
     }
-    ui->choseobjBut->setEnabled(true);
-    ui->countBut->setEnabled(true);
-    ui->createlistBut->setEnabled(true);
-    ui->areaBut->setEnabled(true);
 }
 
 void MainWindow::on_tempBut_clicked()
@@ -185,6 +206,16 @@ void MainWindow::on_tempBut_clicked()
 
     ui->TPlan->setScene(scene);
     paint();
+
+    ui->choseobjBut->setEnabled(true);
+    ui->countBut->setEnabled(true);
+    ui->createlistBut->setEnabled(true);
+    ui->areaBut->setEnabled(true);
+    ui->scaleEdit->setEnabled(true);
+    ui->scaleLabel->setEnabled(true);
+    ui->scaleLabel_2->setEnabled(true);
+    ui->scaleLabel_3->setEnabled(true);
+    ui->areaLine->setText("");
 }
 
 
