@@ -34,6 +34,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->countBut->setEnabled(false);
     ui->createlistBut->setEnabled(false);
     ui->areaBut->setEnabled(false);
+    ui->scaleEdit->setEnabled(false);
+    ui->scaleLabel->setEnabled(false);
+    ui->scaleLabel_2->setEnabled(false);
+    ui->scaleLabel_3->setEnabled(false);
 }
 
 MainWindow::~MainWindow()
@@ -166,10 +170,6 @@ void MainWindow::paint()
         xml_door = xml_door->NextSiblingElement("door");
         dots.clear();
     }
-    ui->choseobjBut->setEnabled(true);
-    ui->countBut->setEnabled(true);
-    ui->createlistBut->setEnabled(true);
-    ui->areaBut->setEnabled(true);
 }
 
 void MainWindow::on_tempBut_clicked()
@@ -185,6 +185,15 @@ void MainWindow::on_tempBut_clicked()
 
     ui->TPlan->setScene(scene);
     paint();
+
+    ui->choseobjBut->setEnabled(true);
+    ui->countBut->setEnabled(true);
+    ui->createlistBut->setEnabled(true);
+    ui->areaBut->setEnabled(true);
+    ui->scaleEdit->setEnabled(true);
+    ui->scaleLabel->setEnabled(true);
+    ui->scaleLabel_2->setEnabled(true);
+    ui->scaleLabel_3->setEnabled(true);
 }
 
 
