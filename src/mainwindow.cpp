@@ -166,7 +166,7 @@ void MainWindow::paint()
         }
         dots.push_back(dots[0]);
         QPolygonF pol(dots);
-        scene->addPolygon(pol, QPen(Qt::black), QBrush(Qt::darkYellow));
+        scene->addPolygon(pol, QPen(Qt::black), QBrush(Qt::darkBlue));
 
         xml_win = xml_win->NextSiblingElement("window");
         dots.clear();
