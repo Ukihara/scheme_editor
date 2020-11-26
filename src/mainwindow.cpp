@@ -215,6 +215,7 @@ void MainWindow::on_tempBut_clicked()
     ui->scaleLabel->setEnabled(true);
     ui->scaleLabel_2->setEnabled(true);
     ui->scaleLabel_3->setEnabled(true);
+    ui->areaLine->setText("");
 }
 
 
