@@ -65,7 +65,28 @@ void MainWindow::on_countBut_clicked()
 void MainWindow::on_areaBut_clicked()
 {
     //здесь считаем площадь и выводим на areaLine
-    ui->areaLine->setText("Вы нажали кнопку");
+    QList<QGraphicsItem *> items =  scene->items();
+    bool frst = true;
+    double square = 0;
+    int frst_wall = 1;
+    int scnd_wall = 1;
+    double meter_scale = ui->scaleEdit->text().toDouble();
+
+    for (auto x : items){
+        if (x->boundingRect().height() == 8 || x->boundingRect().width() == 8){ // that means that this wall is main
+            if (frst){ // walls should be grouped by room (room1_wall, room1_wall, room2_wall, room2_wall, ... etc)
+                frst_wall = x->boundingRect().height() == 8 ? x->boundingRect().width() - 1 : x->boundingRect().height() - 1;
+                frst = false;
+            }
+            else{
+                scnd_wall = x->boundingRect().height() == 8 ? x->boundingRect().width() - 1 : x->boundingRect().height() - 1;
+                square += frst_wall * scnd_wall;
+                frst = true;
+                qDebug() << "nth room square : " << frst_wall * scnd_wall;
+            }
+        }
+    }
+    ui->areaLine->setText(QString::number(square * meter_scale * meter_scale) + " m^2");
 }
 
 void MainWindow::paint_comp()
