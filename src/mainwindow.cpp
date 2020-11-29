@@ -222,15 +222,10 @@ void MainWindow::on_tempBut_clicked()
 
 void MainWindow::on_autoplacement_clicked()
 {
-    foreach(QGraphicsItem *item, scene->items())
-    {
-        scene->removeItem(item);
-    }
-    paint();
     foreach(TComp *comp, comps)
     {
+
         comp->setPos(randomBetween(30, 900), randomBetween(30, 400));
-        scene->addItem(comp);
         qreal pos_x = randomBetween(30, 900);
         qreal pos_y = randomBetween(30, 400);
 
@@ -245,7 +240,6 @@ void MainWindow::on_autoplacement_clicked()
     foreach(TPrinter *printer, printers)
     {
         printer->setPos(randomBetween(30, 900), randomBetween(30, 400));
-        scene->addItem(printer);
         qreal pos_x = randomBetween(30, 900);
         qreal pos_y = randomBetween(30, 400);
 
@@ -260,7 +254,6 @@ void MainWindow::on_autoplacement_clicked()
     foreach(TRouter *router, routers)
     {
         router->setPos(randomBetween(30, 900), randomBetween(30, 400));
-        scene->addItem(router);
         qreal pos_x = randomBetween(30, 900);
         qreal pos_y = randomBetween(30, 400);
 
