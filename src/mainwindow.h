@@ -49,6 +49,7 @@ private slots:
     void on_countBut_clicked();
     void on_areaBut_clicked();
     void on_tempBut_clicked();
+    void on_autoplacement_clicked();
 
 private:
     Ui::MainWindow *ui;

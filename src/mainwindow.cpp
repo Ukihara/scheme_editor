@@ -38,6 +38,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->scaleLabel->setEnabled(false);
     ui->scaleLabel_2->setEnabled(false);
     ui->scaleLabel_3->setEnabled(false);
+    ui->autoplacement->setEnabled(false);
 }
 
 MainWindow::~MainWindow()
@@ -215,7 +216,53 @@ void MainWindow::on_tempBut_clicked()
     ui->scaleLabel->setEnabled(true);
     ui->scaleLabel_2->setEnabled(true);
     ui->scaleLabel_3->setEnabled(true);
+    ui->autoplacement->setEnabled(true);
     ui->areaLine->setText("");
 }
 
+void MainWindow::on_autoplacement_clicked()
+{
+    foreach(TComp *comp, comps)
+    {
 
+        comp->setPos(randomBetween(30, 900), randomBetween(30, 400));
+        qreal pos_x = randomBetween(30, 900);
+        qreal pos_y = randomBetween(30, 400);
+
+        while(!scene->collidingItems(comp).isEmpty())
+        {
+            comp->setX(pos_x);
+            comp->setY(pos_y);
+            pos_x = randomBetween(30, 900);
+            pos_y = randomBetween(30, 400);
+        }
+    }
+    foreach(TPrinter *printer, printers)
+    {
+        printer->setPos(randomBetween(30, 900), randomBetween(30, 400));
+        qreal pos_x = randomBetween(30, 900);
+        qreal pos_y = randomBetween(30, 400);
+
+        while(!scene->collidingItems(printer).isEmpty())
+        {
+            printer->setX(pos_x);
+            printer->setY(pos_y);
+            pos_x = randomBetween(30, 900);
+            pos_y = randomBetween(30, 400);
+        }
+    }
+    foreach(TRouter *router, routers)
+    {
+        router->setPos(randomBetween(30, 900), randomBetween(30, 400));
+        qreal pos_x = randomBetween(30, 900);
+        qreal pos_y = randomBetween(30, 400);
+
+        while(!scene->collidingItems(router).isEmpty())
+        {
+            router->setX(pos_x);
+            router->setY(pos_y);
+            pos_x = randomBetween(30, 900);
+            pos_y = randomBetween(30, 400);
+        }
+    }
+}

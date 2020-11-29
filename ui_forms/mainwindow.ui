@@ -170,6 +170,19 @@
      <string>m</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="autoplacement">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>360</y>
+      <width>161</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Авторасстановка</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -177,7 +190,7 @@
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>22</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>
