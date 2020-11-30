@@ -93,25 +93,55 @@ void MainWindow::on_areaBut_clicked()
 void MainWindow::paint_comp()
 {
     TComp *item = new TComp();
-    item->setPos(randomBetween(30, 470), randomBetween(30, 470));
+    item->setPos(randomBetween(30, 900), randomBetween(30, 400));
     comps.push_back(item);
     scene->addItem(item);
+    qreal pos_x = randomBetween(30, 900);
+    qreal pos_y = randomBetween(30, 400);
+
+    while(!scene->collidingItems(item).isEmpty())
+    {
+        item->setX(pos_x);
+        item->setY(pos_y);
+        pos_x = randomBetween(30, 900);
+        pos_y = randomBetween(30, 400);
+    }
 }
 
 void MainWindow::paint_prin()
 {
     TPrinter *item = new TPrinter();
-    item->setPos(randomBetween(30, 470), randomBetween(30, 470));
+    item->setPos(randomBetween(30, 900), randomBetween(30, 400));
     printers.push_back(item);
     scene->addItem(item);
+    qreal pos_x = randomBetween(30, 900);
+    qreal pos_y = randomBetween(30, 400);
+
+    while(!scene->collidingItems(item).isEmpty())
+    {
+        item->setX(pos_x);
+        item->setY(pos_y);
+        pos_x = randomBetween(30, 900);
+        pos_y = randomBetween(30, 400);
+    }
 }
 
 void MainWindow::paint_rout()
 {
     TRouter *item = new TRouter();
-    item->setPos(randomBetween(30, 470), randomBetween(30, 470));
+    item->setPos(randomBetween(30, 900), randomBetween(30, 400));
     routers.push_back(item);
     scene->addItem(item);
+    qreal pos_x = randomBetween(30, 900);
+    qreal pos_y = randomBetween(30, 400);
+
+    while(!scene->collidingItems(item).isEmpty())
+    {
+        item->setX(pos_x);
+        item->setY(pos_y);
+        pos_x = randomBetween(30, 900);
+        pos_y = randomBetween(30, 400);
+    }
 }
 
 void MainWindow::paint()

@@ -15,6 +15,11 @@ TRouter::~TRouter()
     delete ui;
 }
 
+static int randomBetween(int low, int high)
+{
+    return (qrand() % ((high + 1) - low) + low);
+}
+
 QRectF TRouter::boundingRect() const
 {
     return QRectF (0, 0, 20, 25);
@@ -48,6 +53,9 @@ void TRouter::mousePressEvent(QGraphicsSceneMouseEvent *event)
     if (event->button() == Qt::LeftButton)
     {
         this->setCursor(QCursor(Qt::ClosedHandCursor));
+
+        pos_x = this->x();
+        pos_y = this->y();
     }
     else if (event->button() == Qt::RightButton)
     {
@@ -62,14 +70,15 @@ void TRouter::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
 void TRouter::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-    qreal pos_x = 10;
-    qreal pos_y = 10;
-
-    if (!scene()->collidingItems(this).isEmpty()){
+    if(!scene()->collidingItems(this).isEmpty())
+    {
         this->setX(pos_x);
         this->setY(pos_y);
     }
     else
+    {
         this->setCursor(QCursor(Qt::ArrowCursor));
+    }
+
     Q_UNUSED(event);
 }
