@@ -13,6 +13,11 @@ TComp::~TComp()
     delete ui;
 }
 
+static int randomBetween(int low, int high)
+{
+    return (qrand() % ((high + 1) - low) + low);
+}
+
 /* Создаем прямоугольную область, ограничивающую наш объект
  * */
 QRectF TComp::boundingRect() const
@@ -60,6 +65,8 @@ void TComp::mousePressEvent(QGraphicsSceneMouseEvent *event)
          * заменяем курсор на руку, которая держит этот элемент
          * */
         this->setCursor(QCursor(Qt::ClosedHandCursor));
+        pos_x = this->x();
+        pos_y = this->y();
     }
     else if (event->button() == Qt::RightButton)
     {
@@ -86,15 +93,16 @@ void TComp::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
      * collidingItems возвращает список элементов на основной сцене, с которыми произошла
      * коллизия здешнего элемента
      * */
-    qreal pos_x = 10;
-    qreal pos_y = 10;
 
-    if (!scene()->collidingItems(this).isEmpty())
+    if(!scene()->collidingItems(this).isEmpty())
     {
         this->setX(pos_x);
         this->setY(pos_y);
     }
     else
+    {
         this->setCursor(QCursor(Qt::ArrowCursor));
+    }
+
     Q_UNUSED(event);
 }

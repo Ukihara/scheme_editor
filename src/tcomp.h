@@ -31,6 +31,9 @@ private:
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+
+    qreal pos_x;
+    qreal pos_y;
 };
 
 #endif // TCOMP_H
