@@ -50,7 +50,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>COMPUTER</string>
+     <string>Компьютер</string>
     </property>
    </widget>
    <widget class="QPushButton" name="tprinterBut">
@@ -63,7 +63,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>PRINTER</string>
+     <string>Принтер</string>
     </property>
    </widget>
    <widget class="QPushButton" name="trouterBut">
@@ -76,7 +76,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>ROUTER</string>
+     <string>Роутер</string>
     </property>
    </widget>
   </widget>
@@ -86,7 +86,7 @@
      <x>0</x>
      <y>0</y>
      <width>792</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

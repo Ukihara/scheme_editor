@@ -81,7 +81,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Щёлк</string>
+           <string>Выбрать план</string>
           </property>
          </widget>
         </item>
