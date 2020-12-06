@@ -45,7 +45,10 @@ void TRouter::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, Q
 
 void TRouter::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
-    this->setPos(mapToScene(event->pos()));
+    auto pos = event->pos();
+    pos.setX(event->pos().rx() - this->dx);
+    pos.setY(event->pos().ry() - this->dy);
+    this->setPos(mapToScene(pos));
 }
 
 void TRouter::mousePressEvent(QGraphicsSceneMouseEvent *event)
@@ -53,7 +56,8 @@ void TRouter::mousePressEvent(QGraphicsSceneMouseEvent *event)
     if (event->button() == Qt::LeftButton)
     {
         this->setCursor(QCursor(Qt::ClosedHandCursor));
-
+        this->dx = event->pos().rx();
+        this->dy = event->pos().ry();
         pos_x = this->x();
         pos_y = this->y();
     }
@@ -72,8 +76,8 @@ void TRouter::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     if(!scene()->collidingItems(this).isEmpty())
     {
-        this->setX(pos_x);
-        this->setY(pos_y);
+        this->setX(pos_x + dx);
+        this->setY(pos_y + dy);
     }
     else
     {

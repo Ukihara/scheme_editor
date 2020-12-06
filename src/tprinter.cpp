@@ -7,7 +7,8 @@ TPrinter::TPrinter(QObject *parent) :
     QObject(parent), QGraphicsItem(),
     ui(new Ui::TPrinter)
 {
-
+    this->dx = 0;
+    this->dy = 0;
 }
 
 TPrinter::~TPrinter()
@@ -45,7 +46,10 @@ void TPrinter::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
 
 void TPrinter::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
-    this->setPos(mapToScene(event->pos()));
+    auto pos = event->pos();
+    pos.setX(event->pos().rx() - this->dx);
+    pos.setY(event->pos().ry() - this->dy);
+    this->setPos(mapToScene(pos));
 }
 
 void TPrinter::mousePressEvent(QGraphicsSceneMouseEvent *event)
@@ -53,9 +57,8 @@ void TPrinter::mousePressEvent(QGraphicsSceneMouseEvent *event)
     if (event->button() == Qt::LeftButton)
     {
         this->setCursor(QCursor(Qt::ClosedHandCursor));
-
-        pos_x = this->x();
-        pos_y = this->y();
+        this->dx = event->pos().rx();
+        this->dy = event->pos().ry();
     }
     else if (event->button() == Qt::RightButton)
     {
@@ -72,8 +75,8 @@ void TPrinter::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     if(!scene()->collidingItems(this).isEmpty())
     {
-        this->setX(pos_x);
-        this->setY(pos_y);
+        this->setX(pos_x + dx);
+        this->setY(pos_y + dy);
     }
     else
     {
