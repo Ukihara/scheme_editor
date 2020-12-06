@@ -34,6 +34,9 @@ private:
 
     qreal pos_x;
     qreal pos_y;
+
+    qreal dx;
+    qreal dy;
 };
 
 #endif // TPRINTER_H

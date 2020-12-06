@@ -54,7 +54,10 @@ void TComp::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
      * курсора внутри графического элемента
      * в координатную систему графической сцены
      * */
-    this->setPos(mapToScene(event->pos()));
+    auto pos = event->pos();
+    pos.setX(event->pos().rx() - this->dx);
+    pos.setY(event->pos().ry() - this->dy);
+    this->setPos(mapToScene(pos));
 }
 
 void TComp::mousePressEvent(QGraphicsSceneMouseEvent *event)
@@ -65,6 +68,8 @@ void TComp::mousePressEvent(QGraphicsSceneMouseEvent *event)
          * заменяем курсор на руку, которая держит этот элемент
          * */
         this->setCursor(QCursor(Qt::ClosedHandCursor));
+        this->dx = event->pos().rx();
+        this->dy = event->pos().ry();
         pos_x = this->x();
         pos_y = this->y();
     }
@@ -96,8 +101,8 @@ void TComp::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 
     if(!scene()->collidingItems(this).isEmpty())
     {
-        this->setX(pos_x);
-        this->setY(pos_y);
+        this->setX(pos_x + dx);
+        this->setY(pos_y + dy);
     }
     else
     {
