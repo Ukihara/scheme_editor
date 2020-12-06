@@ -15,8 +15,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    this->resize(1200, 700);
-    this->setFixedSize(1200, 700);
+    this->resize(1250, 700);
+    this->setFixedSize(1300, 700);
     scene = new QGraphicsScene(this);
 
     //инициализируем окно выбора и подключаем к слоту
