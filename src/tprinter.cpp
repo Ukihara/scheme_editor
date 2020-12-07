@@ -47,8 +47,16 @@ void TPrinter::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
 void TPrinter::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
     auto pos = event->pos();
+
     pos.setX(event->pos().rx() - this->dx);
     pos.setY(event->pos().ry() - this->dy);
+
+    if (this->x() > scene()->width() | this->x() < 0 ){
+        return;
+    }
+    if (this->y() > scene()->height() | this->y() < 0 ){
+        return;
+    }
     this->setPos(mapToScene(pos));
 }
 
@@ -80,6 +88,26 @@ void TPrinter::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     }
     else
     {
+        if (this->x() > scene()->width() ){
+            this->setX(this->x() - 10);
+            this->mouseReleaseEvent(event);
+        }
+        else{
+            if (this->x() < 0){
+                this->setX(this->x() + 10);
+                this->mouseReleaseEvent(event);
+            }
+        }
+        if (this->y() > scene()->height() ){
+            this->setY(this->y() - 10);
+            this->mouseReleaseEvent(event);
+        }
+        else{
+            if (this->y() < 0){
+                this->setY(this->y() + 10);
+                this->mouseReleaseEvent(event);
+            }
+        }
         this->setCursor(QCursor(Qt::ArrowCursor));
     }
 
