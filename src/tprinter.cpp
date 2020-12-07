@@ -67,6 +67,8 @@ void TPrinter::mousePressEvent(QGraphicsSceneMouseEvent *event)
         this->setCursor(QCursor(Qt::ClosedHandCursor));
         this->dx = event->pos().rx();
         this->dy = event->pos().ry();
+        pos_x = this->x();
+        pos_y = this->y();
     }
     else if (event->button() == Qt::RightButton)
     {
