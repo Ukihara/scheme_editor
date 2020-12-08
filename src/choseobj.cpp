@@ -7,8 +7,8 @@ ChoseObj::ChoseObj(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    createobj = new CreateObj();
-    connect(createobj, &CreateObj::choseWindow, this, &ChoseObj::show);
+//    createobj = new CreateObj();
+//    connect(createobj, &CreateObj::choseWindow, this, &ChoseObj::show);
 }
 
 ChoseObj::~ChoseObj()
@@ -36,6 +36,8 @@ void ChoseObj::on_trouterBut_clicked()
 
 void ChoseObj::on_createBut_clicked()
 {
+    createobj = new CreateObj();
+    connect(createobj, &CreateObj::choseWindow, this, &ChoseObj::show);
     createobj->show();
     this->close();
 }
