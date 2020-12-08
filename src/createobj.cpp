@@ -6,6 +6,9 @@ CreateObj::CreateObj(QWidget *parent) :
     ui(new Ui::CreateObj)
 {
     ui->setupUi(this);
+    draw_area = new DrawArea(ui->mainLayout->widget());
+    draw_area->resize(500, 500);
+    ui->mainLayout->insertWidget(0, draw_area);
 }
 
 CreateObj::~CreateObj()
@@ -25,4 +28,9 @@ void CreateObj::on_cancelBut_clicked()
     this->close();
     emit choseWindow();
     //здесь больше ничего не будет
+}
+
+void CreateObj::on_cancelLastPoint_clicked()
+{
+    this->draw_area->removeLastPoint();
 }

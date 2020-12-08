@@ -2,6 +2,7 @@
 #define CREATEOBJ_H
 
 #include <QMainWindow>
+#include "drawarea.h"
 
 namespace Ui {
 class CreateObj;
@@ -22,8 +23,11 @@ private slots:
     void on_readyBut_clicked();
     void on_cancelBut_clicked();
 
+    void on_cancelLastPoint_clicked();
+
 private:
     Ui::CreateObj *ui;
+    DrawArea *draw_area;
 };
 
 #endif // CREATEOBJ_H

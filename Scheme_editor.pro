@@ -12,6 +12,7 @@ SOURCES += \
     src/choseobj.cpp \
     src/createlist.cpp \
     src/createobj.cpp \
+    src/drawarea.cpp \
     src/main.cpp \
     src/mainwindow.cpp \
     src/tinyxml2.cpp \
@@ -23,6 +24,7 @@ HEADERS += \
     src/choseobj.h \
     src/createlist.h \
     src/createobj.h \
+    src/drawarea.h \
     src/mainwindow.h \
     src/tinyxml2.h \
     src/tcomp.h \
