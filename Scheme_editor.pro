@@ -15,6 +15,7 @@ SOURCES += \
     src/drawarea.cpp \
     src/main.cpp \
     src/mainwindow.cpp \
+    src/tcustomobject.cpp \
     src/tinyxml2.cpp \
     src/tcomp.cpp \
     src/tprinter.cpp \
@@ -26,6 +27,7 @@ HEADERS += \
     src/createobj.h \
     src/drawarea.h \
     src/mainwindow.h \
+    src/tcustomobject.h \
     src/tinyxml2.h \
     src/tcomp.h \
     src/tprinter.h \
@@ -36,6 +38,7 @@ FORMS += \
     ui_forms/choseobj.ui \
     ui_forms/createlist.ui \
     ui_forms/createobj.ui \
+    ui_forms/custom_obj.ui \
     ui_forms/mainwindow.ui\
     ui_forms/tcomp.ui \
     ui_forms/tprinter.ui \

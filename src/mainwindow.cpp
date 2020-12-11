@@ -26,6 +26,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(choseobj, &ChoseObj::firstWindow_comp, this, &MainWindow::paint_comp);
     connect(choseobj, &ChoseObj::firstWindow_prin, this, &MainWindow::paint_prin);
     connect(choseobj, &ChoseObj::firstWindow_rout, this, &MainWindow::paint_rout);
+    connect(choseobj, &ChoseObj::firstWindow_custom_obj, this, &MainWindow::paint_custom_obj);
 
     createlist = new CreateList();
     connect(createlist, &CreateList::firstWindow, this, &MainWindow::show);
@@ -103,6 +104,31 @@ void MainWindow::paint_comp()
     {
         item->setX(pos_x);
         item->setY(pos_y);
+        pos_x = randomBetween(30, 900);
+        pos_y = randomBetween(30, 400);
+    }
+}
+
+void MainWindow::paint_custom_obj(QPolygon *poly)
+{
+    TCustomObject *item = new TCustomObject(poly);
+//    item->setPos(randomBetween(30, 900), randomBetween(30, 400));
+    custom_objects.push_back(item);
+    scene->addItem(item);
+    qreal pos_x = randomBetween(30, 900);
+    qreal pos_y = randomBetween(30, 400);
+    item->setX(pos_x);
+    item->setY(pos_y);
+    item->pos_x = pos_x;
+    item->pos_y = pos_y;
+
+    while(!scene->collidingItems(item).isEmpty())
+    {
+//        auto xx = scene->collidingItems(item);
+        item->setX(pos_x);
+        item->setY(pos_y);
+        item->pos_x = pos_x;
+        item->pos_y = pos_y;
         pos_x = randomBetween(30, 900);
         pos_y = randomBetween(30, 400);
     }
@@ -291,6 +317,22 @@ void MainWindow::on_autoplacement_clicked()
         {
             router->setX(pos_x);
             router->setY(pos_y);
+            pos_x = randomBetween(30, 900);
+            pos_y = randomBetween(30, 400);
+        }
+    }
+    foreach(TCustomObject *cobj, custom_objects)
+    {
+        cobj->setPos(randomBetween(30, 900), randomBetween(30, 400));
+        qreal pos_x = randomBetween(30, 900);
+        qreal pos_y = randomBetween(30, 400);
+
+        while(!scene->collidingItems(cobj).isEmpty())
+        {
+            cobj->setX(pos_x);
+            cobj->setY(pos_y);
+            cobj->pos_x = pos_x;
+            cobj->pos_y = pos_y;
             pos_x = randomBetween(30, 900);
             pos_y = randomBetween(30, 400);
         }

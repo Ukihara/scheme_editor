@@ -14,6 +14,7 @@ public:
     explicit DrawArea(QWidget *parent = nullptr);
     void removeLastPoint();
 
+    QPolygon *polygon;
 protected:
     void paintEvent(QPaintEvent *event) override;
     void mousePressEvent(QMouseEvent *event) override;
@@ -23,8 +24,6 @@ protected:
 private:
     void fillBackground();
     void drawPoly();
-
-    QPolygon *polygon;
 
 signals:
 

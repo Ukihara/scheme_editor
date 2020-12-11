@@ -18,6 +18,7 @@ public:
 
 signals:
     void choseWindow();
+    void createObj(QPolygon *p);
 
 private slots:
     void on_readyBut_clicked();
