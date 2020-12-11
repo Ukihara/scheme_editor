@@ -23,6 +23,7 @@ public:
     ~TCustomObject();
     qreal pos_x = 0;
     qreal pos_y = 0;
+    QPolygon *polygon;
 
 private:
     Ui::TCustomObject *ui;
@@ -33,8 +34,6 @@ private:
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
-
-    QPolygon *polygon;
 
     qreal dx = 0;
     qreal dy = 0;

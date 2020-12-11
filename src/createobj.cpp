@@ -19,7 +19,6 @@ CreateObj::~CreateObj()
 void CreateObj::on_readyBut_clicked()
 {
     this->close();
-//    this->draw_area->polygon->translate(this->draw_area->polygon->, -50);
     emit createObj(this->draw_area->polygon);
     //здесь будет код, описывающий добавление нарисованной фигуры в список оборудования и отображение на экране выбора
 }
