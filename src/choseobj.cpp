@@ -7,8 +7,8 @@ ChoseObj::ChoseObj(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    createobj = new CreateObj();
-    connect(createobj, &CreateObj::choseWindow, this, &ChoseObj::show);
+//    createobj = new CreateObj();
+//    connect(createobj, &CreateObj::choseWindow, this, &ChoseObj::show);
 }
 
 ChoseObj::~ChoseObj()
@@ -34,8 +34,17 @@ void ChoseObj::on_trouterBut_clicked()
     emit firstWindow_rout();
 }
 
+void ChoseObj::createObject_done(QPolygon *p)
+{
+    this->close();
+    emit firstWindow_custom_obj(p);
+}
+
 void ChoseObj::on_createBut_clicked()
 {
+    createobj = new CreateObj();
+    connect(createobj, &CreateObj::choseWindow, this, &ChoseObj::show);
+    connect(createobj, &CreateObj::createObj, this, &ChoseObj::createObject_done);
     createobj->show();
     this->close();
 }

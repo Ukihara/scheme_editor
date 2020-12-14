@@ -26,6 +26,7 @@ using namespace tinyxml2;
 #include "tcomp.h"
 #include "tprinter.h"
 #include "trouter.h"
+#include "tcustomobject.h"
 
 namespace Ui {
 class MainWindow;
@@ -42,6 +43,7 @@ public:
     void paint_comp();
     void paint_prin();
     void paint_rout();
+    void paint_custom_obj(QPolygon *poly);
 
 private slots:
     void on_choseobjBut_clicked();
@@ -65,5 +67,6 @@ private:
     QVector <TComp*> comps;
     QVector <TPrinter*> printers;
     QVector <TRouter*> routers;
+    QVector <TCustomObject *> custom_objects;
 };
 #endif // MAINWINDOW_H

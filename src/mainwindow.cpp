@@ -26,6 +26,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(choseobj, &ChoseObj::firstWindow_comp, this, &MainWindow::paint_comp);
     connect(choseobj, &ChoseObj::firstWindow_prin, this, &MainWindow::paint_prin);
     connect(choseobj, &ChoseObj::firstWindow_rout, this, &MainWindow::paint_rout);
+    connect(choseobj, &ChoseObj::firstWindow_custom_obj, this, &MainWindow::paint_custom_obj);
 
     createlist = new CreateList();
     connect(createlist, &CreateList::firstWindow, this, &MainWindow::show);
@@ -105,6 +106,32 @@ void MainWindow::paint_comp()
         item->setY(pos_y);
         pos_x = randomBetween(30, 900);
         pos_y = randomBetween(30, 400);
+    }
+}
+
+void MainWindow::paint_custom_obj(QPolygon *poly)
+{
+    TCustomObject *item = new TCustomObject(poly);
+    custom_objects.push_back(item);
+    scene->addItem(item);
+    auto max_w =  scene->width() - poly->boundingRect().width() - 300;
+    auto max_h = scene->height() - poly->boundingRect().height() - 300;
+    qreal pos_x = randomBetween(30, max_w);
+    qreal pos_y = randomBetween(30, max_h);
+    item->setPos(pos_x, pos_y);
+    int max_try_amount = 100000;
+
+    while(!scene->collidingItems(item).isEmpty() && --max_try_amount >= 0)
+    {
+        pos_x = randomBetween(30, max_w);
+        pos_y = randomBetween(30, max_h);
+        item->setPos(pos_x, pos_y);
+    }
+    item->update();
+    if (max_try_amount < 0){
+        QMessageBox::warning(nullptr, "Ошибка", "Не удалось поместить объект на сцену", QMessageBox::Ok);
+        scene->removeItem(item);
+        delete item;
     }
 }
 
@@ -294,5 +321,22 @@ void MainWindow::on_autoplacement_clicked()
             pos_x = randomBetween(30, 900);
             pos_y = randomBetween(30, 400);
         }
+    }
+    foreach(TCustomObject *cobj, custom_objects)
+    {
+        auto max_w =  scene->width() - cobj->polygon->boundingRect().width() - 100;
+        auto max_h = scene->height() - cobj->polygon->boundingRect().height() - 100;
+        qreal pos_x = randomBetween(30, max_w);
+        qreal pos_y = randomBetween(30, max_h);
+
+        cobj->setPos(pos_x, pos_y);
+
+        while(!scene->collidingItems(cobj).isEmpty())
+        {
+            pos_x = randomBetween(30, max_w);
+            pos_y = randomBetween(30, max_h);
+            cobj->setPos(pos_x, pos_y);
+        }
+        cobj->update();
     }
 }
