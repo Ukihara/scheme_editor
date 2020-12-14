@@ -12,20 +12,37 @@ SOURCES += \
     src/choseobj.cpp \
     src/createlist.cpp \
     src/createobj.cpp \
+    src/drawarea.cpp \
     src/main.cpp \
-    src/mainwindow.cpp
+    src/mainwindow.cpp \
+    src/tcustomobject.cpp \
+    src/tinyxml2.cpp \
+    src/tcomp.cpp \
+    src/tprinter.cpp \
+    src/trouter.cpp
 
 HEADERS += \
     src/choseobj.h \
     src/createlist.h \
     src/createobj.h \
-    src/mainwindow.h
+    src/drawarea.h \
+    src/mainwindow.h \
+    src/tcustomobject.h \
+    src/tinyxml2.h \
+    src/tcomp.h \
+    src/tprinter.h \
+    src/trouter.h
+
 
 FORMS += \
     ui_forms/choseobj.ui \
     ui_forms/createlist.ui \
     ui_forms/createobj.ui \
-    ui_forms/mainwindow.ui
+    ui_forms/custom_obj.ui \
+    ui_forms/mainwindow.ui\
+    ui_forms/tcomp.ui \
+    ui_forms/tprinter.ui \
+    ui_forms/trouter.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
