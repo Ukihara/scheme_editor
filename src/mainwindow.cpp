@@ -40,6 +40,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->scaleLabel_2->setEnabled(false);
     ui->scaleLabel_3->setEnabled(false);
     ui->autoplacement->setEnabled(false);
+    ui->areaLine->setEnabled(false);
+    ui->countLine->setEnabled(false);
 }
 
 MainWindow::~MainWindow()
