@@ -40,6 +40,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->scaleLabel_2->setEnabled(false);
     ui->scaleLabel_3->setEnabled(false);
     ui->autoplacement->setEnabled(false);
+    ui->areaLine->setEnabled(false);
+    ui->countLine->setEnabled(false);
 }
 
 MainWindow::~MainWindow()
@@ -61,7 +63,14 @@ void MainWindow::on_createlistBut_clicked()
 void MainWindow::on_countBut_clicked()
 {
     //здесь считаем количество оборудования и выводим на countLine
-    ui->countLine->setText("Вы нажали кнопку");
+    int num_of_items = 0;
+    num_of_items += comps.size();
+    num_of_items += printers.size();
+    num_of_items += routers.size();
+    num_of_items += custom_objects.size();
+    QString num;
+    num.setNum(num_of_items);
+    ui->countLine->setText(num);
 }
 
 void MainWindow::on_areaBut_clicked()
